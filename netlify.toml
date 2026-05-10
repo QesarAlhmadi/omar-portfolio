@@ -1,42 +1,34 @@
 # =============================================================================
-# Netlify Configuration (netlify.toml) - المسار الصحيح: المسار الجذري (Root)
+# Netlify Deployment Configuration
 # =============================================================================
 
 [build]
-  # أمر البناء: استخدام Hugo مع تفعيل ميزات التحسين القصوى وتنظيف الذاكرة
+  # --minify لتقليل حجم الملفات، --gc لتنظيف الذاكرة المؤدية لسرعة البناء
   command = "hugo --minify --gc"
-  # مجلد النشر الذي سيحتوي على ملفات الموقع النهائية
+  # المجلد الذي يحتوي على الموقع الجاهز للنشر
   publish = "public"
 
-# إعدادات البيئة وتحديد إصدار Hugo مستقر
 [build.environment]
+  # تحديد نسخة Hugo ضروري جداً لتجنب تعارض القوالب الحديثة مع البيئات القديمة
   HUGO_VERSION = "0.121.0"
+  # لضمان معالجة اللغة العربية والرموز بشكل صحيح في بيئة Linux
+  NODE_VERSION = "20"
 
 [[headers]]
   for = "/*"
   [headers.values]
     X-Frame-Options = "DENY"
     X-Content-Type-Options = "nosniff"
-    Referrer-Policy = "strict-origin-when-cross-origin"
-    Permissions-Policy = "camera=(), microphone=(), geolocation=(), usb=(), interest-cohort=()"
-    Strict-Transport-Security = "max-age=31536000; includeSubDomains; preload"
+    Content-Security-Policy = "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://identity.netlify.com https://unpkg.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: blob:; connect-src 'self' https://identity.netlify.com;"
 
-    # سياسة أمن المحتوى (CSP) مطورة ومصححة لدعم Decap CMS و Netlify Identity بأمان كامل
-    Content-Security-Policy = """
-    default-src 'self';
-    script-src 'self' 'unsafe-inline' 'unsafe-eval' https://identity.netlify.com https://unpkg.com;
-    style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
-    img-src 'self' data: blob: https://res.cloudinary.com;
-    font-src 'self' https://fonts.gstatic.com;
-    connect-src 'self' https://identity.netlify.com;
-    frame-src 'self' https://identity.netlify.com;
-    frame-ancestors 'none';
-    base-uri 'self';
-    form-action 'self';
-    """
-
-# إعدادات إعادة التوجيه للوحة التحكم (حاسمة جداً لعمل Decap CMS بشكل صحيح)
+# توجيهات لوحة التحكم: حاسمة لمنع خطأ 404 عند تحديث صفحة الأدمن
 [[redirects]]
   from = "/admin/*"
-  to = "/admin/"
+  to = "/admin/index.html"
   status = 200
+
+# توجيه كافة الطلبات غير الموجودة لصفحة 404 (اختياري)
+[[redirects]]
+  from = "/*"
+  to = "/404.html"
+  status = 404
