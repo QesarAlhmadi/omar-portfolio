@@ -1,0 +1,64 @@
+# =============================================================================
+# Hugo Configuration (hugo.toml) - الموقع الشخصي للمطور عمر الحمادي
+# =============================================================================
+
+# الرابط الأساسي للموقع (سيتم تحديثه تلقائياً بواسطة Netlify)
+baseURL = "/"
+# لغة المحتوى الافتراضية
+defaultContentLanguage = "ar"
+# عنوان الموقع الرئيسي (يظهر في نتائج البحث)
+title = "عمر الحمادي | مبرمج ومطور برمجيات"
+# تمكين الاختصارات البرمجية
+enableInlineShortcodes = true
+
+# إعدادات ضغط الملفات (Minify) لسرعة تحميل فائقة
+[minify]
+  [minify.tdewolff.html]
+    keepWhitespace = false
+  [minify.tdewolff.css]
+    keepCSS2 = false
+  [minify.tdewolff.js]
+    keepVarNames = false
+  [minify.tdewolff.svg]
+    keepComments = false
+
+# تهيئة اللغة العربية مع دعم الاتجاه (RTL)
+[languages]
+  [languages.ar]
+    languageName = "العربية"
+    languageDirection = "rtl"
+    weight = 1
+    title = "عمر الحمادي"
+    [languages.ar.params]
+      description = "طالب تقنية معلومات ومطور برمجيات متخصص في بناء الحلول الويب والأنظمة الذكية."
+      author = "عمر الحمادي"
+
+# إعدادات الروابط (Permalinks) لتحسين الأرشفة (SEO)
+[permalinks]
+  posts = "/blog/:slug/"
+  projects = "/projects/:slug/"
+
+# السماح لمحركات البحث بفهرسة الموقع
+enableRobotsTXT = true
+
+# إعدادات خريطة الموقع لمساعدة جوجل في العثور على برامجك
+[sitemap]
+  changefreq = "weekly"
+  priority = 0.8
+  filename = "sitemap.xml"
+
+# الوسوم المتقدمة والبيانات التعريفية للموقع
+[params]
+  description = "الموقع الرسمي للمطور عمر الحمادي. استكشف مشاريعي البرمجية، مقالاتي في تقنية المعلومات، وأدواتي المطورة."
+  keywords = ["عمر الحمادي", "مطور برمجيات يمني", "IT Student", "Jamstack", "Hugo Developer", "صنعاء"]
+  defaultImage = "/images/profile.jpg" # تأكد من رفع صورتك بهذا الاسم لاحقاً
+  
+  # إعدادات إضافية لقالب PaperMod الاحترافي
+  showCodeCopyButtons = true
+  showFullTextContent = false
+  editPost = { URL = "https://github.com/QesarAlhmadi/omar-portfolio/tree/main/content" }
+
+# استيراد قالب PaperMod الاحترافي
+[module]
+  [[module.imports]]
+    path = "github.com/adityatelange/hugo-PaperMod"
