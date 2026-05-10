@@ -1,0 +1,70 @@
+# =============================================================================
+# static/admin/config.yml - إعدادات لوحة التحكم الاحترافية للمطور عمر الحمادي
+# =============================================================================
+
+backend:
+  name: git-gateway
+  branch: main 
+  repo: QesarAlhmadi/omar-portfolio # تم التحديث ليتوافق مع مستودعك الحالي
+
+# تمكين سير العمل التحريري لإدارة المسودات والمراجعة قبل النشر
+publish_mode: editorial_workflow
+
+# إعدادات الوسائط والصور
+media_folder: "static/images"
+public_folder: "/images"
+
+# سيتم تحديث هذا الرابط تلقائياً بعد ربط Netlify، لكن يفضل وضعه هنا للمعاينة
+site_url: https://omar-portfolio.netlify.app
+
+# واجهة لوحة التحكم باللغة العربية بالكامل
+locale: 'ar'
+
+collections:
+  # ---- 1. قسم المدونة (مقالات تقنية) ----
+  - name: "blog"
+    label: "المدونة"
+    label_singular: "مقال"
+    folder: "content/posts"
+    create: true
+    format: yaml-frontmatter
+    extension: md
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}" # تنظيم المقالات حسب التاريخ
+    summary: "{{title}}"
+    fields:
+      - { label: "عنوان المقال", name: "title", widget: "string" }
+      - { label: "تاريخ النشر", name: "date", widget: "datetime", format: "YYYY-MM-DD", date_format: "DD/MM/YYYY", time_format: false }
+      - { label: "وصف مختصر (SEO)", name: "description", widget: "text", required: true }
+      - { label: "صورة الغلاف", name: "image", widget: "image", required: false }
+      - { label: "محتوى المقال", name: "body", widget: "markdown" }
+
+  # ---- 2. معرض المشاريع البرمجية ----
+  - name: "projects"
+    label: "المشاريع"
+    label_singular: "مشروع"
+    folder: "content/projects"
+    create: true
+    format: yaml-frontmatter
+    extension: md
+    slug: "{{slug}}"
+    fields:
+      - { label: "اسم المشروع", name: "title", widget: "string" }
+      - { label: "عن المشروع", name: "description", widget: "text" }
+      - { label: "رابط GitHub أو المعاينة", name: "link", widget: "string", required: false }
+      - { label: "صورة توضيحية", name: "image", widget: "image", required: false }
+      - { label: "التقنيات المستخدمة", name: "tags", widget: "list", required: false }
+      - { label: "شرح تقني للمشروع", name: "body", widget: "markdown" }
+
+  # ---- 3. البيانات الشخصية (الصفحة الرئيسية) ----
+  - name: "about"
+    label: "الصفحة التعريفية"
+    files:
+      - label: "تعديل الملف الشخصي"
+        name: "home"
+        file: "content/_index.md"
+        format: yaml-frontmatter
+        fields:
+          - { label: "الاسم والعنوان الرئيسي", name: "title", widget: "string" }
+          - { label: "وصف المهنة", name: "description", widget: "text" }
+          - { label: "صورتك الشخصية", name: "image", widget: "image", required: false }
+          - { label: "السيرة الذاتية المختصرة", name: "body", widget: "markdown" }
