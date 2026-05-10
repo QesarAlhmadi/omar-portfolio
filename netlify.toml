@@ -1,35 +1,30 @@
 # =============================================================================
-# Netlify Configuration (netlify.toml) - إعدادات البناء ورؤوس الأمان المتطورة
+# Netlify Configuration (netlify.toml) - المسار الصحيح: المسار الجذري (Root)
 # =============================================================================
 
 [build]
-  # أمر البناء: استخدام Hugo مع تفعيل ميزات التحسين القصوى
+  # أمر البناء: استخدام Hugo مع تفعيل ميزات التحسين القصوى وتنظيف الذاكرة
   command = "hugo --minify --gc"
   # مجلد النشر الذي سيحتوي على ملفات الموقع النهائية
   publish = "public"
 
-# إعدادات البيئة (اختياري: لتحديد إصدار Hugo)
+# إعدادات البيئة وتحديد إصدار Hugo مستقر
 [build.environment]
-  HUGO_VERSION = "0.121.0" # يفضل دائماً تحديد إصدار مستقر
+  HUGO_VERSION = "0.121.0"
 
 [[headers]]
   for = "/*"
   [headers.values]
-    # منع هجمات الاختطاف عبر الإطارات (Clickjacking) [cite: 1]
     X-Frame-Options = "DENY"
-    # منع المتصفح من محاولة تخمين نوع الملف (MIME Sniffing) [cite: 1]
     X-Content-Type-Options = "nosniff"
-    # حماية الخصوصية عند الانتقال لروابط خارجية [cite: 1, 2]
     Referrer-Policy = "strict-origin-when-cross-origin"
-    # تعطيل ميزات المتصفح غير الضرورية لزيادة الأمان [cite: 2]
     Permissions-Policy = "camera=(), microphone=(), geolocation=(), usb=(), interest-cohort=()"
-    # فرض بروتوكول HTTPS المشفر لمدة عام كامل [cite: 2, 3]
     Strict-Transport-Security = "max-age=31536000; includeSubDomains; preload"
 
-    # سياسة أمن المحتوى (CSP) - تم تحديثها لتدعم لوحة التحكم والسكربتات الخارجية بأمان [cite: 3, 4]
+    # سياسة أمن المحتوى (CSP) مطورة ومصححة لدعم Decap CMS و Netlify Identity بأمان كامل
     Content-Security-Policy = """
     default-src 'self';
-    script-src 'self' 'unsafe-inline' https://identity.netlify.com https://unpkg.com;
+    script-src 'self' 'unsafe-inline' 'unsafe-eval' https://identity.netlify.com https://unpkg.com;
     style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
     img-src 'self' data: blob: https://res.cloudinary.com;
     font-src 'self' https://fonts.gstatic.com;
@@ -40,7 +35,7 @@
     form-action 'self';
     """
 
-# إعدادات إعادة التوجيه للوحة التحكم (ضروري لعمل Decap CMS بشكل صحيح)
+# إعدادات إعادة التوجيه للوحة التحكم (حاسمة جداً لعمل Decap CMS بشكل صحيح)
 [[redirects]]
   from = "/admin/*"
   to = "/admin/"
