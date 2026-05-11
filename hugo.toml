@@ -1,75 +1,57 @@
 # =============================================================================
-# Hugo Configuration (hugo.toml) - الموقع الشخصي للمطور عمر الحمادي
-# المسار الصحيح: omar-portfolio-main/hugo.toml
+# Hugo Configuration (hugo.toml) - النسخة المصححة والنهائية
 # =============================================================================
-#للمواالأساسيالأساسي للموقع
+
 baseURL = "/"
 defaultContentLanguage = "ar"
 title = "عمر الحمادي | مبرمج ومطور برمجيات"
+enableInlineShortcodes = true
+enableRobotsTXT = true
 
-# الإصلاح هنا: نضع رابط الموديول كاملاً كقالب
-theme = "github.com/adityatelange/hugo-PaperMod"
-
+# ملاحظة: تم حذف سطر theme نهائياً والاعتماد على الموديول أسفله
 [module]
   [[module.imports]]
     path = "github.com/adityatelange/hugo-PaperMod"
 
-# بقية الإعدادات التي أضفتها أنت سابقاً...
+# إعدادات اللغة العربية ودعم الاتجاه من اليمين لليسار
+[languages.ar]
+  languageName = "العربية"
+  languageCode = "ar-ye"
+  contentDir = "content"
+  weight = 1
+  [languages.ar.params]
+    displayFullLangName = true
+    description = "طالب تقنية معلومات ومطور برمجيات"
+    author = "عمر الحمادي"
+    [languages.ar.params.homeInfoParams]
+      Title = "مرحباً بك في فضائي التقني 🚀"
+      Content = "أنا عمر، طالب IT ومطور برمجيات. أهتم بالأمن السيبراني وبناء الأنظمة الذكية."
 
-# تمكين الاختصارات البرمجية وتنسيق الروابط
-enableInlineShortcodes = true
-enableRobotsTXT = true
+# إعدادات الروابط الدائمة (Permalinks)
+[permalinks]
+  posts = "/posts/:slug/"
+  projects = "/projects/:slug/"
 
+# إعدادات القالب والمميزات التقنية
+[params]
+  env = "production"
+  description = "الموقع الرسمي للمطور عمر الحمادي"
+  author = "عمر الحمادي"
+  defaultTheme = "auto"
+  showCodeCopyButtons = true
+  
+  # أيقونات التواصل الاجتماعي
+  [[params.socialIcons]]
+    name = "github"
+    url = "https://github.com/QesarAlhmadi"
+
+# ضغط الملفات لتحسين الأداء على Netlify
 [minify]
   disableXML = false
   [minify.tdewolff.html]
     keepWhitespace = false
 
-[languages.ar]
-  languageName = "العربية"
-  contentDir = "content" # تحديد مكان المحتوى بدقة
-  weight = 1
-  title = "عمر الحمادي"
-  languageCode = "ar-ye"
-  [languages.ar.params]
-    displayFullLangName = true
-    description = "طالب تقنية معلومات ومطور برمجيات متخصص في بناء حلول الويب"
-    author = "عمر الحمادي"
-    
-    # إعدادات واجهة PaperMod (Home Page)
-    [languages.ar.params.homeInfoParams]
-        Title = "مرحباً بك في فضائي التقني 🚀"
-        Content = "أنا عمر، طالب IT ومطور برمجيات. أهتم بالأمن السيبراني وبناء الأنظمة الذكية."
-
-    # أيقونات التواصل الاجتماعي
-    [[languages.ar.params.socialIcons]]
-        name = "github"
-        url = "https://github.com/QesarAlhmadi"
-    [[languages.ar.params.socialIcons]]
-        name = "linkedin"
-        url = "#" # يمكنك إضافة رابطك هنا لاحقاً
-
-[permalinks]
-  posts = "/posts/:slug/"
-  projects = "/projects/:slug/"
-
-[params]
-  env = "production"
-  description = "الموقع الرسمي للمطور عمر الحمادي. استكشف مشاريعي البرمجية ومدونتي التقنية."
-  author = "عمر الحمادي"
-  defaultTheme = "auto"
-  showCodeCopyButtons = true
-  
-  # إعدادات الصور والمعاينة
-  images = ["/images/profile.jpg"]
-
-  [params.assets]
-    disableHLJS = false # تفعيل تظليل الأكواد البرمجية
-
-[module]
-  [[module.imports]]
-    path = "github.com/adityatelange/hugo-PaperMod"
-
+# قائمة التنقل العلوية
 [menu]
   [[menu.main]]
     identifier = "posts"
