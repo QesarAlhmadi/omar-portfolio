@@ -3,15 +3,11 @@
 # =============================================================================
 
 [build]
-  # --minify لتقليل حجم الملفات، --gc لتنظيف الذاكرة المؤدية لسرعة البناء
   command = "hugo --minify --gc"
-  # المجلد الذي يحتوي على الموقع الجاهز للنشر
   publish = "public"
 
 [build.environment]
-  # تحديد نسخة Hugo ضروري جداً لتجنب تعارض القوالب الحديثة مع البيئات القديمة
   HUGO_VERSION = "0.121.0"
-  # لضمان معالجة اللغة العربية والرموز بشكل صحيح في بيئة Linux
   NODE_VERSION = "20"
 
 [[headers]]
@@ -21,13 +17,11 @@
     X-Content-Type-Options = "nosniff"
     Content-Security-Policy = "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://identity.netlify.com https://unpkg.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: blob:; connect-src 'self' https://identity.netlify.com;"
 
-# توجيهات لوحة التحكم: حاسمة لمنع خطأ 404 عند تحديث صفحة الأدمن
 [[redirects]]
   from = "/admin/*"
   to = "/admin/index.html"
   status = 200
 
-# توجيه كافة الطلبات غير الموجودة لصفحة 404 (اختياري)
 [[redirects]]
   from = "/*"
   to = "/404.html"
