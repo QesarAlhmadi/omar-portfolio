@@ -2,11 +2,19 @@
 # Hugo Configuration (hugo.toml) - الموقع الشخصي للمطور عمر الحمادي
 # المسار الصحيح: omar-portfolio-main/hugo.toml
 # =============================================================================
-
+#للمواالأساسيالأساسي للموقع
 baseURL = "/"
-title = "عمر الحمادي | مبرمج ومطور برمجيات"
 defaultContentLanguage = "ar"
-theme = ["PaperMod"] # تفعيل القالب كنسخة احتياطية للموديلات
+title = "عمر الحمادي | مبرمج ومطور برمجيات"
+
+# الإصلاح هنا: نضع رابط الموديول كاملاً كقالب
+theme = "github.com/adityatelange/hugo-PaperMod"
+
+[module]
+  [[module.imports]]
+    path = "github.com/adityatelange/hugo-PaperMod"
+
+# بقية الإعدادات التي أضفتها أنت سابقاً...
 
 # تمكين الاختصارات البرمجية وتنسيق الروابط
 enableInlineShortcodes = true
