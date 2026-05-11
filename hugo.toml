@@ -1,19 +1,14 @@
 # =============================================================================
-# Hugo Configuration (hugo.toml) - النسخة المصححة والنهائية
+# Hugo Configuration (hugo.toml) - النسخة النهائية العاملة
 # =============================================================================
 
 baseURL = "/"
 defaultContentLanguage = "ar"
 title = "عمر الحمادي | مبرمج ومطور برمجيات"
+theme = "PaperMod"
 enableInlineShortcodes = true
 enableRobotsTXT = true
 
-# ملاحظة: تم حذف سطر theme نهائياً والاعتماد على الموديول أسفله
-[module]
-  [[module.imports]]
-    path = "github.com/adityatelange/hugo-PaperMod"
-
-# إعدادات اللغة العربية ودعم الاتجاه من اليمين لليسار
 [languages.ar]
   languageName = "العربية"
   languageCode = "ar-ye"
@@ -27,31 +22,26 @@ enableRobotsTXT = true
       Title = "مرحباً بك في فضائي التقني 🚀"
       Content = "أنا عمر، طالب IT ومطور برمجيات. أهتم بالأمن السيبراني وبناء الأنظمة الذكية."
 
-# إعدادات الروابط الدائمة (Permalinks)
 [permalinks]
   posts = "/posts/:slug/"
   projects = "/projects/:slug/"
 
-# إعدادات القالب والمميزات التقنية
 [params]
   env = "production"
   description = "الموقع الرسمي للمطور عمر الحمادي"
   author = "عمر الحمادي"
   defaultTheme = "auto"
   showCodeCopyButtons = true
-  
-  # أيقونات التواصل الاجتماعي
+
   [[params.socialIcons]]
     name = "github"
     url = "https://github.com/QesarAlhmadi"
 
-# ضغط الملفات لتحسين الأداء على Netlify
 [minify]
   disableXML = false
   [minify.tdewolff.html]
     keepWhitespace = false
 
-# قائمة التنقل العلوية
 [menu]
   [[menu.main]]
     identifier = "posts"
