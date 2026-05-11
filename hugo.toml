@@ -2,16 +2,16 @@
 # Hugo Configuration (hugo.toml) - النسخة النهائية العاملة
 # =============================================================================
 
-baseURL = "/"
+baseURL = "https://alqesarsoft.netlify.app/"
 defaultContentLanguage = "ar"
 title = "عمر الحمادي | مبرمج ومطور برمجيات"
 theme = "PaperMod"
 enableInlineShortcodes = true
 enableRobotsTXT = true
-
 [languages.ar]
   languageName = "العربية"
-  languageCode = "ar-ye"
+  languageCode = "artru
+  
   contentDir = "content"
   weight = 1
   [languages.ar.params]
@@ -32,7 +32,8 @@ enableRobotsTXT = true
   author = "عمر الحمادي"
   defaultTheme = "auto"
   showCodeCopyButtons = true
-
+  # أضف هذا السطر الجديد:
+  homeInfoParams = true
   [[params.socialIcons]]
     name = "github"
     url = "https://github.com/QesarAlhmadi"
