@@ -29,7 +29,7 @@ enableRobotsTXT = true
 [params]
   env = "production"
   description = "الموقع الرسمي للمطور عمر الحمادي"
-  author = "عمر الحمادي"
+  author = "عمر عبدالعزيز الحمادي"
   defaultTheme = "auto"
   showCodeCopyButtons = true
   # أضف هذا السطر الجديد:
