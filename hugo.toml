@@ -1,7 +1,3 @@
-# =============================================================================
-# Hugo Configuration - Final Working Copy
-# =============================================================================
-
 baseURL = "https://alqesarsoft.netlify.app/"
 defaultContentLanguage = "ar"
 title = "عمر الحمادي | مبرمج ومطور برمجيات"
